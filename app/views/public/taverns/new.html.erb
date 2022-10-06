@@ -1,0 +1,20 @@
+<h1>投稿ページ</h1>
+<p>投稿</p>
+
+<%= form_with model: @tavern, url: taverns_path,local:true do |f| %>
+<!-- form_withにオプション追記する -->
+   <td>投稿内容</td>
+   <td>
+     店名
+     <%= f.text_field :name %>
+   </td>
+   <td>
+     タイトル
+     <%= f.text_field :title %>
+   </td>
+   <td>
+     詳細
+     <%= f.text_area :body %>
+   </td>
+   <td><%= f.submit '新規登録',class: "btn btn-success" %></td>
+   <% end %>

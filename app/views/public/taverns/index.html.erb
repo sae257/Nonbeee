@@ -1,0 +1,14 @@
+<h1>投稿一覧</h1>
+    <% @taverns.each do |tavern| %>
+      <tr>
+        <td>
+          <%= link_to tavern.name,tavern_path(tavern) %>
+        </td>
+        <td>
+          <%= tavern.title %>
+        </td>
+        <td>
+          <%= tavern.body %>
+        </td>
+      </tr>
+ <% end %>

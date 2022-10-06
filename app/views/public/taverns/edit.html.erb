@@ -1,0 +1,30 @@
+<h1>編集</h1>
+<p></p>
+ <%= form_with model: @tavern, url: tavern_path(@tavern.id), method: :patch do |tavern|  %>
+      <tbody>
+        <tr>
+          <th>
+            <h5>店名
+            　　<%= tavern.text_field :name, class:"w-75" %>
+            </h5>
+          </th>
+          <th>
+            <h5>商品説明
+            　<%= tavern.text_field :title, class:"w-75" %>
+            </h5>
+          </th>
+
+          <th>
+            <h5>ジャンル
+           <%#= item.collection_select :genre_id, Genre.all, :id, :name, {include_blank: "---"}, class:"w-75" %> 
+            </h5>
+          </th>
+
+          <th>
+            <h5>投稿内容
+            　<%= tavern.text_field :body, class:"w-75" %>
+            </h5>
+          </th>
+
+          <%= tavern.submit '変更を保存', class:"btn btn-success" %>
+      <% end %>

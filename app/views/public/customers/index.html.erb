@@ -1,0 +1,14 @@
+<h1>会員一覧</h1>
+<% @customers.each do |f| %>
+      <tr>
+        <td>
+          <%= link_to f.name_first,customer_path(f) %>
+        </td>
+        <td>
+          <%= f.name_second %>
+        </td>
+        <td>
+          <%=  %>
+        </td>
+      </tr>
+ <% end %>
