@@ -4,7 +4,7 @@ class DeviseCreateBars < ActiveRecord::Migration[6.1]
   def change
     create_table :bars do |t|
       ## Database authenticatable
-      t.string :bar_email,              null: false, default: ""
+      t.string :email,              null: false, default: ""
       t.string :encrypted_password, null: false, default: ""
 
       ## Recoverable
@@ -14,9 +14,9 @@ class DeviseCreateBars < ActiveRecord::Migration[6.1]
       ## Rememberable
       t.datetime :remember_created_at
       t.string :bar_name, null: false
-      t.string :title, null: false
-      t.string :body, null: false
-      t.string :genre_id, null: false
+      t.string :title
+      t.string :body
+      t.string :genre_id
       t.string :address, null: false
       t.string :bar_tel, null: false
       t.string :post_code, null: false
@@ -44,7 +44,7 @@ class DeviseCreateBars < ActiveRecord::Migration[6.1]
       t.timestamps null: false
     end
 
-    add_index :bars, :baremail,                unique: true
+    add_index :bars, :email,                unique: true
     add_index :bars, :reset_password_token, unique: true
     # add_index :bars, :confirmation_token,   unique: true
     # add_index :bars, :unlock_token,         unique: true

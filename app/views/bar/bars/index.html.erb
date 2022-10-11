@@ -1,2 +1,13 @@
-<h1>Bar::Bars#index</h1>
-<p>Find me in app/views/bar/bars/index.html.erb</p>
+<h1>投稿一覧</h1>
+  
+      <tr>
+        <td>
+          <%#= link_to tavern.name,tavern_path(tavern) %>
+        </td>
+        <td>
+          <%= @bars.title %>
+        </td>
+        <td>
+          <%= @bars.body %>
+        </td>
+      </tr>

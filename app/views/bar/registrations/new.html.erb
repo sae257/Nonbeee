@@ -4,11 +4,10 @@
   <%= render "bar/shared/error_messages", resource: resource %>
 
   <div class="field">
-    名前</br>
-    <%= f.label :店名 %>
-    　<%= f.text_field :bar_name %></br>
+    <%= f.label :店名 %></br>
+    <%= f.text_field :bar_name %>
   </div>
-  
+
   <div class="field">
     <%= f.label :電話番号（ハイフンなし） %></br>
     <%= f.text_field :bar_tel %>
@@ -18,12 +17,12 @@
     <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
   </div>
-  
+
   <div class="field">
     <%= f.label :郵便番号 %></br>
     <%= f.text_field :post_code %>
   </div>
-  
+
   <div class="field">
     <%= f.label :住所 %></br>
     <%= f.text_field :address %>

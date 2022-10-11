@@ -19,6 +19,7 @@ Rails.application.routes.draw do
   end
 
   namespace :bar do
+  root to: "homes#top"
   resources :bars, only: [:new, :index, :edit, :show, :create, :update, :destroy]
   end
 

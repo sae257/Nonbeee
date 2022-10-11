@@ -25,22 +25,22 @@ ActiveRecord::Schema.define(version: 2022_10_10_103917) do
   end
 
   create_table "bars", force: :cascade do |t|
-    t.string "bar_email", default: "", null: false
+    t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
     t.string "bar_name", null: false
-    t.string "title", null: false
-    t.string "body", null: false
-    t.string "genre_id", null: false
+    t.string "title"
+    t.string "body"
+    t.string "genre_id"
     t.string "address", null: false
     t.string "bar_tel", null: false
     t.string "post_code", null: false
     t.boolean "is_deleted", default: false, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index "\"baremail\"", name: "index_bars_on_baremail", unique: true
+    t.index ["email"], name: "index_bars_on_email", unique: true
     t.index ["reset_password_token"], name: "index_bars_on_reset_password_token", unique: true
   end
 
