@@ -1,0 +1,2 @@
+module Bar::HomesHelper
+end
