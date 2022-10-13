@@ -14,9 +14,6 @@ class DeviseCreateBars < ActiveRecord::Migration[6.1]
       ## Rememberable
       t.datetime :remember_created_at
       t.string :bar_name, null: false
-      t.string :title
-      t.string :body
-      t.string :genre_id
       t.string :address, null: false
       t.string :bar_tel, null: false
       t.string :post_code, null: false

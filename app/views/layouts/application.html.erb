@@ -27,13 +27,46 @@
               <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'nav-link text-dark' %>
             </li>
             <li class="nav-item">
-              <%= link_to '投稿フォーム', root_path, class: 'nav-link text-dark' %>
+              <%= link_to '投稿一覧', root_path, class: 'nav-link text-dark' %>
             </li>
             <li class="nav-item">
               <%= link_to 'マイページ', user_path(current_user.id), class: 'nav-link text-dark' %>
             </li>
+
             <% else %>
+            <% if admin_signed_in? %>
+
             <li class="nav-item">
+              <%= link_to "会員一覧(ユーザー)", new_user_registration_path, class: 'nav-link text-dark' %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "会員一覧(お店)", new_user_session_path, class: 'nav-link text-dark' %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "投稿一覧", new_bar_registration_path, class: 'nav-link text-dark' %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "ジャンル一覧", new_bar_registration_path, class: 'nav-link text-dark' %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: 'nav-link text-dark' %>
+            </li>
+
+            <% else %>
+            <% if bar_signed_in? %>
+
+            <li class="nav-item">
+              <%= link_to "投稿する", new_bar_tweet_path, class: 'nav-link text-dark' %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "マイページ", bar_tweets_path, class: 'nav-link text-dark' %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "ログアウト", destroy_bar_session_path, method: :delete, class: 'nav-link text-dark' %>
+            </li>
+
+            <% else %>
+             <li class="nav-item">
               <%= link_to "新規登録", new_user_registration_path, class: 'nav-link text-dark' %>
             </li>
             <li class="nav-item">
@@ -41,7 +74,9 @@
             </li>
             <li class="nav-item">
               <%= link_to "お店の方", new_bar_registration_path, class: 'nav-link text-dark' %>
-            </li>
+
+            <% end %>
+            <% end %>
             <% end %>
             </ul>
           </div>
@@ -74,8 +109,3 @@
     </footer>
   </body>
 </html>
-
- <%#body>
-    <%= yield >
-   </body>
-</html.  %>
