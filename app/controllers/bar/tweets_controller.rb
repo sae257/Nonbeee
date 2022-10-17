@@ -1,6 +1,6 @@
 class Bar::TweetsController < ApplicationController
   def index
-    @tweets = Tweet.all
+    @tweets = current_bar.tweets
   end
 
   def new
@@ -13,18 +13,19 @@ class Bar::TweetsController < ApplicationController
 
   def show
     @tweet = Tweet.find(params[:id])
-    #id持たせないとアソシエーションする
+    #アソシエーションする
   end
-  
+
   def create
     @tweet = Tweet.new(tweet_params)
+    @tweet.bar_id = current_bar.id
     if @tweet.save
     redirect_to bar_tweets_path
     else
     render :new
     end
   end
-  
+
   def update
     @tweet = Tweet.find(params[:id])
     @tweet.present?
@@ -34,11 +35,11 @@ class Bar::TweetsController < ApplicationController
     render :edit
     end
   end
-  
+
    private
 
   def tweet_params
   params.require(:tweet).permit(:title, :body, :genre_id)
   end
-  
+
 end

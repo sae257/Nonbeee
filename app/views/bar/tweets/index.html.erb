@@ -18,7 +18,7 @@
             <% @tweets.each do |tweet| %>
         <tbody>
           <tr>
-            <td><%= tweet.id %></td>
+            <td><%= tweet.bar.bar_name %></td>
             <td><%= link_to bar_tweet_path(tweet) do %>
                   <%= tweet.title %>
                 <% end %></td>

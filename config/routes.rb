@@ -49,6 +49,7 @@ Rails.application.routes.draw do
 
    resources :users, only: [:new, :index, :edit, :destroy]
    resources :bars, only: [:new, :index, :edit, :show, :create, :update, :destroy]
+   resources :tweets, only: [:new, :index, :edit, :show, :create, :update, :destroy]
   end
   devise_scope :user do
     get '/users/sign_out' => 'devise/sessions#destroy'

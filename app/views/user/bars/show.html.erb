@@ -1,19 +1,20 @@
 
-
 <div class="container">
  <div class="row">
   <div class="col-md-8 offset-md-2">
 
-  <h5><%= @tweet.bar.bar_name %></h5>
+  <h5><%= @bar.bar_name %>の詳細</h5>
     <table class="table table-striped">
       <tr>
       <th>タイトル</th>
       <th>投稿内容</th>
      </tr>
+   <% @tweets.each do |f| %>
       <tr>
-        <td><%= @tweet.title %></td>
-        <td><%= @tweet.body %></td>
+        <td><%= f.title %></td>
+        <td><%= f.body %></td>
       </tr>
+　 <% end %>
    </table>
   </div>
  </div>

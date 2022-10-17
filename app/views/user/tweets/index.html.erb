@@ -1,2 +1,24 @@
-<h1>User::Tweets#index</h1>
-<p>Find me in app/views/user/tweets/index.html.erb</p>
+
+<div class="container">
+ <div class="row">
+  <div class="col-md-8 offset-md-2">
+
+  <h5>投稿一覧</h5>
+    <table class="table table-striped">
+      <tr>
+       <th>店名</th>
+       <th>タイトル</th>
+       <th>投稿内容</th>
+       <td></td>
+     </tr>
+   <% @tweets.each do |f| %>
+      <tr>
+        <td><%= link_to f.bar.bar_name, bar_path(f.bar.id)%></td>
+        <td><%= link_to f.title, tweet_path(f.id) %></td>
+        <td><%= f.body %></td>
+      </tr>
+　 <% end %>
+    </table>
+  </div>
+ </div>
+</div>

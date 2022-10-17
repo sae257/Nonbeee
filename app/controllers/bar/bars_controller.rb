@@ -22,7 +22,7 @@ class Bar::BarsController < ApplicationController
   end
   
   def bar_params
-    params.require(:bar).permit(:title, :body)
+    params.require(:bar).permit(:bar_name, :bar_tel, :address, :post_code, :email)
   end
   
 end

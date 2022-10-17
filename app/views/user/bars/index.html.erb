@@ -1,0 +1,24 @@
+
+<div class="container">
+ <div class="row">
+  <div class="col-md-8 offset-md-2">
+
+  <h5>居酒屋一覧</h5>
+    <table class="table table-striped">
+      <tr>
+      <th>店名</th>
+      <th>電話番号</th>
+      <th>住所</th>
+      <td></td>
+     </tr>
+   <% @bars.each do |f| %>
+      <tr>
+        <td><%= f.bar_name %></td>
+        <td><%= f.bar_tel %></td>
+        <td><%= f.address %></td>
+      </tr>
+　 <% end %>
+   </table>
+  </div>
+ </div>
+</div>
