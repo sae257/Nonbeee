@@ -13,7 +13,7 @@
      </tr>
    <% @bars.each do |f| %>
       <tr>
-        <td><%= f.bar_name %></td>
+        <td><%= link_to f.bar_name, bar_path(f.id)%></td>
         <td><%= f.bar_tel %></td>
         <td><%= f.address %></td>
       </tr>

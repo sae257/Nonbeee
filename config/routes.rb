@@ -1,18 +1,5 @@
 Rails.application.routes.draw do
 
-  
-  namespace :user do
-    get 'tweets/index'
-    get 'tweets/new'
-    get 'tweets/edit'
-    get 'tweets/show'
-  end
-  namespace :admin do
-    get 'genres/index'
-    get 'genres/new'
-    get 'genres/edit'
-    get 'genres/show'
-  end
   devise_for :users,controllers: {
   registrations: "user/registrations",
   sessions: 'user/sessions'}
@@ -49,7 +36,10 @@ Rails.application.routes.draw do
 
    resources :users, only: [:new, :index, :edit, :destroy]
    resources :bars, only: [:new, :index, :edit, :show, :create, :update, :destroy]
-   resources :tweets, only: [:new, :index, :edit, :show, :create, :update, :destroy]
+   resources :tweets, only: [:new, :index, :edit, :show, :create, :update, :destroy] do
+     resource :favorites, only: [:create, :destroy]
+     resources :tweet_comments, only: [:create, :destroy]
+   end
   end
   devise_scope :user do
     get '/users/sign_out' => 'devise/sessions#destroy'
