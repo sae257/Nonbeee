@@ -1,0 +1,35 @@
+<div class="container">
+        <div class="row">
+
+
+<p>投稿ページ</p>
+
+<%= form_with model: @bar, url: bar_bars_path,local:true do |f| %>
+<!-- form_withにオプション追記する -->
+  <a></a>
+   <table class="table table-inverse border border-dark">
+   <th>投稿内容</th>
+    <tr>
+   <th>
+     店名
+     <%#= @bars.bar_name %>
+   </th>
+   </tr>
+   <tr>
+   <th>
+     タイトル
+     <%= f.text_field :title %>
+   </th>
+  </tr>
+  <tr>
+  <th>
+     詳細
+     <%= f.text_area :body %>
+   </th>
+   </tr>
+
+   <td><%= f.submit '新規登録',class: "btn btn-success" %></td>
+  </table>
+   <% end %>
+   </div>
+   </div>

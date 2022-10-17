@@ -1,0 +1,37 @@
+
+<div class="container">
+ <div class="row">
+  <div class="col-md-8 offset-md-2">
+
+  <h5><%= @bar.bar_name %>の詳細</h5>
+    <table class="table table-striped">
+      <tr>
+      <th>タイトル</th>
+      <th>投稿内容</th>
+      <th></th>
+      <th></th>
+     </tr>
+   <% @tweets.each do |f| %>
+      <tr>
+        <td><%= link_to f.title, tweet_path(f.id) %></td>
+        <td><%= f.body %></td>
+        <td><%= "#{f.tweet_comments.count} コメント" %></td>
+           <% if f.favorited_by?(current_user) %>
+          <td>
+             <%= link_to tweet_favorites_path(f), method: :delete do %>
+              ♥<%= f.favorites.count %> いいね
+              <% end %>
+          </td>
+           <% else %>
+          <td>
+              <%= link_to tweet_favorites_path(f), method: :post do %>
+              ♡<%= f.favorites.count %> いいね
+              <% end %>
+          </td>
+           <% end %>
+      </tr>
+　 <% end %>
+   </table>
+  </div>
+ </div>
+</div>

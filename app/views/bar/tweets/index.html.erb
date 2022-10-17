@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<p id="notice"></p>
+　<div calss="row">
+    <div class="col-md-8 offset-md-1">
+      <h2>商品一覧　　　　　　　<%= link_to '新しい商品', root_path %></h2>
+      <table class="table  table-inverse">
+
+
+        <thead>
+          <tr>
+            <th>投稿タイトル</th>
+            <th>投稿内容</th>
+            <th>投稿内容</th>
+            <th>ジャンル</th>
+          </tr>
+        </thead>
+
+            <% @tweets.each do |tweet| %>
+        <tbody>
+          <tr>
+            <td><%= tweet.bar.bar_name %></td>
+            <td><%= link_to bar_tweet_path(tweet) do %>
+                  <%= tweet.title %>
+                <% end %></td>
+            <td><%= tweet.body %>円</td>
+            <td>ジャンル</td＞
+          </tr>
+        </tbody>
+            <% end %>
+<%#= paginate @items %>
+      </table>
+    </div>
