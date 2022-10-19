@@ -1,5 +1,5 @@
-<h1> <%= @user.name_first %><%= @user.name_second %>のマイページ</h1>
+<h1> <%= @user.name_first %><%= @user.name_second %>さんのマイページ</h1>
 <th><%= link_to "編集する", edit_user_path(current_user), class: "btn btn-success"  %></th>
-<p>お気に入り一覧</p>
+<p><%= link_to "いいねした投稿", favorites_user_path(@user) %></p>
 <p>レビュー一覧</p>
 <p>コメント一覧</p>

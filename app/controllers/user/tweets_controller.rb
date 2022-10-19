@@ -3,9 +3,6 @@ class User::TweetsController < ApplicationController
     @tweets = Tweet.all
   end
 
-  def new
-  end
-
   def edit
   end
 

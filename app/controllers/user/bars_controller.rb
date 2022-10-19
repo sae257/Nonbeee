@@ -7,6 +7,7 @@ class User::BarsController < ApplicationController
   def show
     @bar = Bar.find(params[:id])
     @tweets = @bar.tweets
+    @review = Review.new
   end
 
 end

@@ -33,9 +33,17 @@ Rails.application.routes.draw do
     get "/users/show" => "users#show", as: "user"
     patch 'users/update' => "users#update"
     get 'users/confirm' => "users#confirm"
-
-   resources :users, only: [:new, :index, :edit, :destroy]
-   resources :bars, only: [:new, :index, :edit, :show, :create, :update, :destroy]
+    get "search" => "searches#search"
+  
+   resources :searchs, only: [:index]
+   resources :users, only: [:new, :index, :edit, :destroy] do
+     member do
+     get :favorites
+     end
+   end
+   resources :bars, only: [:new, :index, :edit, :show, :create, :update, :destroy] do
+     resources :reviews, only: [:create, :destroy]
+    end
    resources :tweets, only: [:new, :index, :edit, :show, :create, :update, :destroy] do
      resource :favorites, only: [:create, :destroy]
      resources :tweet_comments, only: [:create, :destroy]
