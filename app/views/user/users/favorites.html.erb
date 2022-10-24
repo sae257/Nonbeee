@@ -1,0 +1,20 @@
+
+<div class="container">
+ <div class="row">
+  <div class="col-md-8">
+
+<table class="table table-striped">
+<p>いいねした投稿一覧</p>
+    <tr>
+      <th>タイトル</th>
+      <th>投稿内容</th>
+    </tr>
+<% @favorite_tweets.each do |tweet|%>
+      <td><%=tweet.title %></td>
+      <td><%=tweet.body %></td>
+    </tr>
+<% end %>
+</table>
+   </div>
+  </div>
+ </div>

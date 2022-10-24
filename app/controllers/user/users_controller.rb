@@ -1,4 +1,7 @@
 class User::UsersController < ApplicationController
+  before_action :set_user, only: [:favorites]
+  
+  
   def index
   end
 
@@ -25,6 +28,12 @@ class User::UsersController < ApplicationController
   def confirm
 
   end
+  
+  def favorites
+    @user = User.find(params[:id])
+    favorites = Favorite.where(user_id: @user.id).pluck(:tweet_id)
+    @favorite_tweets = Tweet.find(favorites)
+  end
 
   private
 
@@ -32,6 +41,8 @@ class User::UsersController < ApplicationController
     params.require(:user).permit(:name_first, :name_second, :name_firdt_rubi, :name_second_rubi, :tel, :email)
   end
 
-
+  def set_user
+    @user = User.find(params[:id])
+  end
 
 end

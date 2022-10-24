@@ -1,0 +1,24 @@
+<h2>Results index</h2>
+
+<table class="table table-hover table-inverse">
+  <!--検索対象モデルがUserの時 -->
+  <% if @range == "Bar" %>
+    <tbody>
+      <% @bars.each do |bar| %>
+        <tr>
+          <td><%= bar.bar_name %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  <% else %>
+    <!--検索対象モデルがUserではない時(= 検索対象モデルがBookの時) -->
+    <tbody>
+      <% @tweets.each do |tweet| %>
+        <tr>
+          <td><%= tweet.title %></td>
+          <td><%= tweet.body %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  <% end %>
+</table>
