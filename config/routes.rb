@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
 
+  namespace :user do
+    get 'genres/show'
+  end
   namespace :admin do
     get 'bars/index'
     get 'bars/new'
@@ -54,9 +57,9 @@ Rails.application.routes.draw do
     get "/users/show" => "users#show", as: "user"
     patch 'users/update' => "users#update"
     get 'users/confirm' => "users#confirm"
-    get "search" => "searches#search"
-  
-   resources :searchs, only: [:index]
+    get '/search', to: 'searches#search'
+
+   resources :genres, only: [:index, :show]
    resources :users, only: [:new, :index, :edit, :destroy] do
      member do
      get :favorites

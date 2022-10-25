@@ -15,6 +15,7 @@
     <tbody>
       <% @tweets.each do |tweet| %>
         <tr>
+          <td><%= tweet.bar.bar_name %></td>
           <td><%= tweet.title %></td>
           <td><%= tweet.body %></td>
         </tr>
