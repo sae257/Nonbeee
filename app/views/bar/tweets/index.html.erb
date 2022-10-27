@@ -1,32 +1,31 @@
 <!DOCTYPE html>
-<p id="notice"></p>
-　<div calss="row">
-    <div class="col-md-8 offset-md-1">
-      <h2>商品一覧　　　　　　　<%= link_to '新しい商品', root_path %></h2>
-      <table class="table  table-inverse">
+<div class="row">
+   <div class="col-md-8 offset-md-2">
+    <h4><%=current_bar.bar_name %>さんのマイページ</h4>
+    <%= link_to(bar_bar_path(current_bar), class:"text-dark") do %>
+       <strong><i class="fa fa-beer"></i><span> <%= current_bar.bar_name %></span></strong>
+       <% end %>
 
+<% @tweets.each do |f| %>
+<div class="card w-50 mx-auto mt-4 shadow-lg">
+ <div class="card-body">
+  <div class="row">
+   <div class="col-md-8 offset-md-2">
 
-        <thead>
-          <tr>
-            <th>投稿タイトル</th>
-            <th>投稿内容</th>
-            <th>投稿内容</th>
-            <th>ジャンル</th>
-          </tr>
-        </thead>
+     <p class="card-title">
+       <%= link_to(bar_tweet_path(f.id), class:"text-dark") do %>
+       <strong><i class="fa fa-beer"></i><span> <%= f.bar.bar_name %></span></strong>
+       <% end %>
+     </p>
+     <p class="card-text"><%= f.title %></p>
+     <p class="card-text"><%= f.body %></p>
+     <p class="card-text"><%= f.genre.name %></p>
+      <span><i class="fas fa-comment"></i> <%= "#{f.tweet_comments.count} コメント" %> ｜ </span>
+      <span>♡<%= f.favorites.count %> いいね</span>
 
-            <% @tweets.each do |tweet| %>
-        <tbody>
-          <tr>
-            <td><%= tweet.bar.bar_name %></td>
-            <td><%= link_to bar_tweet_path(tweet) do %>
-                  <%= tweet.title %>
-                <% end %></td>
-            <td><%= tweet.body %>円</td>
-            <td><%= tweet.genre_id %></td>
-          </tr>
-        </tbody>
-            <% end %>
-<%#= paginate @items %>
-      </table>
-    </div>
+   </div>
+  </div>
+ </div>
+</div>
+<% end %>
+

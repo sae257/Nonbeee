@@ -4,7 +4,7 @@
 <div class="container">
   <div class="row">
     <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
-      <h2>商品新規登録</h2>
+      <h2>新規投稿</h2>
 <%# if @tweet.errors.any? %>
   <%#= @tweet.errors.count件の未記入がありました %>
   <%#<ul>
@@ -25,8 +25,8 @@
 
             <td>
               <h5>
-                投稿内容
-                　　<%= tweet.text_area :body %>
+              投稿内容
+                　<%= tweet.text_area :body %>
               </h5>
             </td>
 

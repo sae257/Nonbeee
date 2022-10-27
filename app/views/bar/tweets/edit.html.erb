@@ -8,18 +8,18 @@
       <tbody>
         <tr>
           <th>
-            <h5>商品画像
+            <h5>タイトル
             　<%= f.text_field :title %>
             </h5>
           </th>
           <th>
-            <h5>商品名
+            <h5>投稿内容
             　<%= f.text_field :body, class:"w-75" %>
             </h5>
           </th>
           <th>
             <h5>ジャンル
-            　<%#= item.collection_select :genre_id, Genre.all, :id, :name, {include_blank: "---"}, class:"w-75" %>
+            　<%= f.collection_select :genre_id, Genre.all, :id, :name, {include_blank: "---"}, class:"w-75" %>
             </h5>
           </th>
           <%= f.submit '変更を保存', class:"btn btn-success" %>

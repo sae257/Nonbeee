@@ -1,26 +1,6 @@
 Rails.application.routes.draw do
 
-  namespace :user do
-    get 'genres/show'
-  end
-  namespace :admin do
-    get 'bars/index'
-    get 'bars/new'
-    get 'bars/edit'
-    get 'bars/show'
-  end
-  namespace :admin do
-    get 'users/index'
-    get 'users/new'
-    get 'users/edit'
-    get 'users/show'
-  end
-  namespace :admin do
-    get 'tweets/index'
-    get 'tweets/new'
-    get 'tweets/edit'
-    get 'tweets/show'
-  end
+ 
   devise_for :users,controllers: {
   registrations: "user/registrations",
   sessions: 'user/sessions'}

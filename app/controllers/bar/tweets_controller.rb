@@ -36,12 +36,18 @@ class Bar::TweetsController < ApplicationController
     end
   end
 
+  def destroy
+    @tweet = Tweet.find(params[:id])
+    @tweet.destroy
+    redirect_to bar_tweets_path
+  end
+
    private
 
   def tweet_params
   params.require(:tweet).permit(:title, :body, :genre_id)
   end
-  
+
   def set_genre
   @genres = Genre.all
   end

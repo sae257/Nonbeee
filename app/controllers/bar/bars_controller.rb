@@ -14,15 +14,19 @@ class Bar::BarsController < ApplicationController
   def show
     @bar = Bar.find(params[:id])
   end
-  
-  def create
-    @bar = Bar.new(bar_params)
-    @bar.save
-    render :show
+
+  def update
+    @bar = Bar.find(params[:id])
+    @bar.present?
+    if @bar.update(bar_params)
+    redirect_to bar_bar_path
+    else
+    render :edit
+    end
   end
-  
+
   def bar_params
     params.require(:bar).permit(:bar_name, :bar_tel, :address, :post_code, :email)
   end
-  
+
 end

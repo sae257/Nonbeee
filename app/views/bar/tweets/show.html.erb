@@ -1,12 +1,36 @@
-<h1>投稿詳細</h1>
-     <tr>
-        <td>
-          <%#= @bar.bar_name %>
-        </td>
-        <td>
-          <%= @tweet.title %>
-        </td>
-        <td>
-          <%= @tweet.body %>
-        </td>
-      </tr>r>
+<div class="card w-50 mx-auto mt-4 shadow-lg">
+ <div class="card-body">
+  <div class="row">
+   <div class="col-md-8 offset-md-2">
+      <h4>投稿詳細</h4>
+     <p class="card-text"><%= @tweet.title %></p>
+     <p class="card-text"><%= @tweet.body %></p>
+     <p class="card-text"><%= @tweet.genre.name %></p>
+      <span><i class="fas fa-comment"></i> <%= "#{@tweet.tweet_comments.count} コメント" %> ｜ </span>
+      <span>♡<%= @tweet.favorites.count %> いいね</span>
+      </tr>
+      <% if @tweet.bar == current_bar %>
+            <td><%= link_to '編集', edit_bar_tweet_path(@tweet), class: "btn btn-sm btn-success edit_tweet_#{@tweet.id}" %></td>
+            <td>
+            <%= link_to "削除", bar_tweet_path, method: :delete,class: "btn btn-sm btn-danger" %>
+           </td>
+          <% end %>
+   </div>
+  </div>
+ </div>
+</div>
+
+<div class="card w-50 mx-auto mt-4 shadow-lg">
+ <div class="card-body">
+  <div class="row">
+   <div class="col-md-6 offset-md-3">
+      <h4>コメント一覧</h4>
+    <% @tweet.tweet_comments.each do |tweet_comment| %>
+    <p><%= tweet_comment.user.name_first %>|<%= tweet_comment.created_at.strftime('%Y/%m/%d') %></p>
+    <p><%= tweet_comment.comment %></p>
+    <p>.................</p>
+    <% end %>
+   </div>
+  </div>
+ </div>
+</div>
