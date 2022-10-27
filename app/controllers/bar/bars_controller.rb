@@ -19,7 +19,7 @@ class Bar::BarsController < ApplicationController
     @bar = Bar.find(params[:id])
     @bar.present?
     if @bar.update(bar_params)
-    redirect_to bar_bar_path
+    redirect_to bar_bar_path(@bar.id)
     else
     render :edit
     end
