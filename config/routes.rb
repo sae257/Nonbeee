@@ -18,7 +18,9 @@ Rails.application.routes.draw do
   namespace :admin do
   root to: "homes#top"
   resources :genres, only: [:new, :index, :edit, :show, :create, :update, :destroy]
-  resources :tweets, only: [:new, :index, :edit, :show, :create, :update, :destroy]
+  resources :tweets, only: [:new, :index, :edit, :show, :create, :update, :destroy] do
+    resources :tweet_comments, only: [:destroy]
+    end
   resources :users, only: [:new, :index, :edit, :show, :create, :update, :destroy]
   resources :bars, only: [:new, :index, :edit, :show, :create, :update, :destroy]
 

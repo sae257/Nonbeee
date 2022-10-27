@@ -1,39 +1,15 @@
-
 <div class="container">
  <div class="row">
   <div class="col-md-8 offset-md-2">
-
-  <h5><%= @bar.bar_name %>の詳細</h5>
-    <table class="table table-striped">
-      <tr>
-       <th>タイトル</th>
-       <th>投稿内容</th>
-       <th></th>
-       <th></th>
-     </tr>
-   <% @tweets.each do |f| %>
-      <tr>
-        <td><%= link_to f.title, tweet_path(f.id) %></td>
-        <td><%= f.body %></td>
-        <td><%= "#{f.tweet_comments.count} コメント" %></td>
-           <% if f.favorited_by?(current_user) %>
-          <td>
-             <%= link_to tweet_favorites_path(f), method: :delete do %>
-              ♥<%= f.favorites.count %> いいね
-              <% end %>
-          </td>
-           <% else %>
-          <td>
-              <%= link_to tweet_favorites_path(f), method: :post do %>
-              ♡<%= f.favorites.count %> いいね
-              <% end %>
-          </td>
-           <% end %>
-      </tr>
-　 <% end %>
-　 </table>
-
-   <p>レビュー件数：<%= @bar.reviews.count %></p>
+    <h5><strong><%= @bar.bar_name %>の詳細</strong></h5>
+    <p>
+      <%= link_to(root_path, class:"text-dark") do %>
+      レビュー件数：<%= @bar.reviews.count %>
+      <% end %>
+    </p>
+      
+    <p>レビュー評価：<%= @bar.reviews.count %></p>
+    
 
     <% @bar.reviews.each do |review| %>
     <%= review.user.name_first %>
@@ -76,7 +52,45 @@
     });
 </script>
   </div>
+ </div>
+</div>
+
+
+   <% @tweets.each do |f| %>
+<div class="card w-50 mx-auto mt-4 shadow-lg">
+ <div class="card-body">
+  <div class="row">
+   <div class="col-md-8 offset-md-2">
+
+      <p class="card-title">
+       <%= link_to(tweet_path(f.id), class:"text-dark") do %>
+       <strong><i class="fa fa-beer"></i><span> <%= f.bar.bar_name %></span></strong>
+       <% end %>
+      </p>
+      <p class="card-text"><%= f.title %></p>
+      <p class="card-text"><%= f.body %></p>
+      <span>
+        <i class="fas fa-comment"></i> <%= "#{f.tweet_comments.count} コメント" %> ｜ 
+      </span>
+      <span>
+        <% if f.favorited_by?(current_user) %>
+          <td>
+             <%= link_to tweet_favorites_path(f), method: :delete do %>
+              ♥<%= f.favorites.count %> いいね
+              <% end %>
+          </td>
+        <% else %>
+          <td>
+              <%= link_to tweet_favorites_path(f), method: :post do %>
+              ♡<%= f.favorites.count %> いいね
+              <% end %>
+          </td>
+        <% end %>
+      </span>
+   </div>
   </div>
  </div>
 </div>
+   <% end %>
+
 

@@ -1,29 +1,27 @@
-<div class="container">
- <div class="row">
-  <div class="col-md-8 offset-md-2">
+<!DOCTYPE html>
+<div class="row">
+   <div class="col-md-8 offset-md-2">
+    <h4>投稿一覧</h4>
 
-  <h5>投稿一覧</h5>
-    <table class="table table-striped">
-      <tr>
-      <th>会員ID</th>
-      <th>店名</th>
-      <th>タイトル</th>
-      <th>投稿内容</th>
-      <th></th>
-      <th></th>
-     </tr>
-   <% @tweets.each do |f| %>
-      <tr>
-        <td><%= f.id %></td>
-<!--モデルに追加-->
-        <td><%= f.bar.bar_name %></td>
-        <td><%= link_to f.title,admin_tweet_path(f.id),class: "underline" %></td>
-        <td><%= f.body %></td>
-        <td><%= f.tweet_comments.count %>コメント</td>
-        <td><%= f.favorites.count %> いいね</td>
-      </tr>
-　 <% end %>
-   </table>
+<% @tweets.each do |f| %>
+<div class="card w-50 mx-auto mt-4 shadow-lg">
+ <div class="card-body">
+  <div class="row">
+   <div class="col-md-8 offset-md-2">
+
+     <p class="card-title">
+       <%= link_to(admin_tweet_path(f.id), class:"text-dark") do %>
+       <strong><i class="fa fa-beer"></i><span> <%= f.bar.bar_name %></span></strong>
+       <% end %>
+     </p>
+     <p class="card-text"><%= f.title %></p>
+     <p class="card-text"><%= f.body %></p>
+     <p class="card-text"><%= f.genre_id %></p>
+      <span><i class="fas fa-comment"></i> <%= "#{f.tweet_comments.count} コメント" %> ｜ </span>
+      <span>♡<%= f.favorites.count %> いいね</span>
+
+   </div>
   </div>
  </div>
 </div>
+<% end %>

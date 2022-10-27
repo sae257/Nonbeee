@@ -1,0 +1,42 @@
+ <p>レビュー件数：<%= @bar.reviews.count %></p>
+
+    <% @bar.reviews.each do |review| %>
+    <%= review.user.name_first %>
+    <%= review.created_at.strftime('%Y/%m/%d') %>
+    <%= review.post %>
+
+    <div class="review-rating" data-score="<%= review.star %>">評価：<div id="review-star-<%= review.id %>"></div></div>
+    <% if review.user == current_user %>
+      <%= link_to "削除", bar_review_path(review.bar, review), method: :delete %>
+    <% end %>
+     <script>
+    $("#review-star-<%= review.id %>").raty({
+        starOn: "<%= asset_path('star-on.png') %>",
+        starOff: "<%= asset_path('star-off.png') %>",
+        score: "<%= review.star %>",
+        readOnly: true
+    });
+</script>
+    <% end %>
+  </div>
+
+   <div>
+    <%= form_with model: [@bar, @review] do |f| %>
+    <%= f.text_area :post, rows: '7', placeholder: "レビューをここに" %>
+
+    <div id="rating-form">
+        <label>評価：</label>
+        <%# scoreNameの値をhidden_fieldでカラムに送っている %>
+        <%= f.hidden_field :star, :value => 'score' %>
+    </div>
+
+    <%= f.submit "送信する" %>
+    <% end %>
+
+    <script>
+    $('#rating-form').raty({
+        starOn: "<%= asset_path('star-on.png') %>",
+        starOff: "<%= asset_path('star-off.png') %>",
+        scoreName: 'review[star]'
+    });
+</script>

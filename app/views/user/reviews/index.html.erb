@@ -1,0 +1,49 @@
+ <p>レビュー一覧 %></p>
+
+  <% if @tweets.present? %>
+  <% @tweets.each do |tweet| %>
+    <div class="row posts">
+      <div class="col-md-2 posts-user">
+        <%= link_to tweet.bar do %>
+        <%= tweet.title %>
+        <% end %>
+      </div>
+      <div class="col-md-6 mb-3">
+        <div class=" posts-content">
+          <p>時間</p>
+          <h4 class="mb-3">評価：<%= tweet.review %>点 | <%= tweet.title %></h4>
+
+          <!--星評価-->
+         <div id="star-rate-<%= tweet.id %>"></div>
+          <script>
+          $('#star-rate-<%= tweet.id %>').raty({
+            size: 36,
+            starOff:  '<%= asset_path('star-off.png') %>',
+            starOn : '<%= asset_path('star-on.png') %>',
+            starHalf: '<%= asset_path('star-half.png') %>',
+            half: true,
+            readOnly: true,
+            score: <%= tweet.review %>,
+          });
+          </script>  
+        <!--/星評価-->
+
+          <p><%= tweet.content %></p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <%= link_to tweet.product do %>
+          <div class="posts-product">
+            <p><%=  tweet.product.title %></p>
+          </div>
+        <%end %>
+      </div>
+      <div class="col-md-12 edit-button">
+        <% if current_user == post.user %>
+          <%= link_to '口コミを編集', edit_post_path(post), method: :get, class:'btn btn-default' %>
+          <%= link_to '口コミを削除', tweet, method: :delete, class:'btn btn-default' %>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+<% end %>

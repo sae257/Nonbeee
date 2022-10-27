@@ -14,6 +14,10 @@ class User::ReviewsController < ApplicationController
     Review.find(params[:id]).destroy
     redirect_to bar_path(params[:bar_id])
   end
+  
+  def index
+    @review = Review.all
+  end
 
   private
 
