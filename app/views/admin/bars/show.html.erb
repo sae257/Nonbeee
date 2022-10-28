@@ -1,2 +1,60 @@
-<h1>Admin::Bars#show</h1>
-<p>Find me in app/views/admin/bars/show.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col3-md offset-1 mt-5 mb-5">
+      <h4><strong><%= @bar.bar_name %>さんの会員詳細</strong></h4>
+    </div>
+  </div>
+
+   <div class="row justify-content-center">
+    <div class="col-md-8">
+      <table class="table shadow-lg">
+        <tr>
+          <th class="table-active">会員ID</th>
+          <td><%= @bar.id %></td>
+        </tr>
+
+        <tr>
+          <th class="table-active">氏名</th>
+          <td><%= @bar.bar_name %></td>
+        </tr>
+
+         <tr>
+          <th class="table-active">郵便番号</th>
+          <td><%= @bar.post_code %></td>
+        </tr>
+
+         <tr>
+          <th class="table-active">住所</th>
+          <td><%= @bar.address %></td>
+        </tr>
+
+        <tr>
+          <th class="table-active">電話番号</th>
+          <td><%= @bar.bar_tel %></td>
+        </tr>
+
+        <tr>
+          <th class="table-active">メールアドレス</th>
+          <td><%= @bar.email %></td>
+        </tr>
+
+        <tr>
+          <th class="table-active">会員ステータス</th>
+          <% if @bar.is_deleted == true %>
+            <td class="text-secondary font-weight-bold">退会</td>
+          <% else %>
+            <td class="text-success font-weight-bold">有効</td>
+          <% end %>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="row justify-content-center">
+    <p class="text-center">
+      <%= link_to "編集する", edit_admin_bar_path(@bar.id), class: 'btn btn-success m-3' %>
+      <%= link_to "コメンtp一覧を見る", root_path, class: 'btn btn-primary m-3' %>
+      <%= link_to "コメンtp一覧を見る", root_path, class: 'btn btn-primary m-3' %>
+    </p>
+  </div>
+</div>

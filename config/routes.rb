@@ -23,11 +23,12 @@ Rails.application.routes.draw do
     end
   resources :users, only: [:new, :index, :edit, :show, :create, :update, :destroy]
   resources :bars, only: [:new, :index, :edit, :show, :create, :update, :destroy]
-
   end
 
   namespace :bar do
   root to: "homes#top"
+  get '/bars/unsubscribe' => 'bars#unsubscribe'
+  patch '/bars/withdraw' => 'bars#withdraw'
   resources :bars, only: [:new, :index, :edit, :show, :create, :update, :destroy]
   resources :tweets, only: [:new, :index, :edit, :show, :create, :update, :destroy]
   end
@@ -40,6 +41,8 @@ Rails.application.routes.draw do
     patch 'users/update' => "users#update"
     get 'users/confirm' => "users#confirm"
     get '/search', to: 'searches#search'
+    get '/users/unsubscribe' => 'users#unsubscribe', as: 'unsubscribe'
+    patch '/users/withdraw' => 'users#withdraw', as: 'withdraw'
 
    resources :genres, only: [:index, :show]
    resources :users, only: [:new, :index, :edit, :destroy] do

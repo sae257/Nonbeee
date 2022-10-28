@@ -24,9 +24,22 @@ class Bar::BarsController < ApplicationController
     render :edit
     end
   end
+  
+  def unsubscribe
+    @bar = current_bar
+  end
+
+  def withdraw
+    @bar = current_bar
+    @bar.update(is_deleted: true)
+    reset_session
+    redirect_to root_path
+  end
+  
+  private
 
   def bar_params
-    params.require(:bar).permit(:bar_name, :bar_tel, :address, :post_code, :email)
+    params.require(:bar).permit(:bar_name, :bar_tel, :address, :post_code, :email, :is_deleted)
   end
 
 end
