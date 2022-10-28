@@ -16,7 +16,8 @@ class User::ReviewsController < ApplicationController
   end
   
   def index
-    @review = Review.all
+     @bar = Bar.find(params[:bar_id])
+     @reviews = @bar.reviews
   end
 
   private

@@ -11,12 +11,12 @@
      </p>
      <p class="card-text"><%= f.title %></p>
      <p class="card-text"><%= f.body %></p>
-      
+
      <span><i class="fas fa-comment"></i> <%= "#{f.tweet_comments.count} コメント" %> ｜ </span>
      <span><% if f.favorited_by?(current_user) %>
        <td>
         <%= link_to tweet_favorites_path(f), method: :delete do %>
-        ♥<%= f.favorites.count %> いいね
+        <i class="text-danger">♥</i><%= f.favorites.count %> いいね
         <% end %>
        </td>
         <% else %>

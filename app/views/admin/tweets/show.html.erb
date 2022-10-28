@@ -5,7 +5,7 @@
       <h4>投稿詳細</h4>
      <p class="card-text"><%= @tweet.title %></p>
      <p class="card-text"><%= @tweet.body %></p>
-     <p class="card-text"><%=  %></p>
+     <p class="card-text"><%= @tweet.genre.name %></p>
       <span><i class="fas fa-comment"></i> <%= "#{@tweet.tweet_comments.count} コメント" %> ｜ </span>
       <span>♡<%= @tweet.favorites.count %> いいね</span>
             <%= link_to "削除", admin_tweet_path, method: :delete,class: "btn btn-sm btn-danger" %>

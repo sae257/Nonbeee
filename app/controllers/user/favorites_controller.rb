@@ -3,13 +3,13 @@ class User::FavoritesController < ApplicationController
     tweet = Tweet.find(params[:tweet_id])
     favorite = current_user.favorites.new(tweet_id: tweet.id)
     favorite.save
-    redirect_to tweet_path(tweet)
+    redirect_back fallback_location: tweets_path
   end
 
   def destroy
     tweet = Tweet.find(params[:tweet_id])
     favorite = current_user.favorites.find_by(tweet_id: tweet.id)
     favorite.destroy
-    redirect_to tweet_path(tweet)
+    redirect_back fallback_location: tweets_path
   end
 end

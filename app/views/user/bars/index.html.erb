@@ -10,12 +10,21 @@
       <th>電話番号</th>
       <th>住所</th>
       <td></td>
+      <td></td>
      </tr>
    <% @bars.each do |f| %>
       <tr>
         <td><%= link_to f.bar_name, bar_path(f.id)%></td>
         <td><%= f.bar_tel %></td>
         <td><%= f.address %></td>
+        <td>
+        <%= link_to bar_reviews_path(f.id) do %>
+        レビュー<%= f.reviews.count %> 件
+        <% end %>
+        </td>
+        <td>
+        <div class="average-score-display">評価：<%= f.reviews.average(:star).to_f.round(1) %> / 5</div>
+ </td>
       </tr>
 　 <% end %>
    </table>

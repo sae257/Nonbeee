@@ -18,7 +18,7 @@
     <% if @tweet.favorited_by?(current_user) %>
     <p>
       <%= link_to tweet_favorites_path(@tweet), method: :delete do %>
-        ♥<%= @tweet.favorites.count %> いいね
+        <i class="text-danger">♥</i><%= @tweet.favorites.count %> いいね
       <% end %>
     </p>
     <% else %>
@@ -29,7 +29,7 @@
     </p>
   <% end %>
     <p>コメント件数：<%= @tweet.tweet_comments.count %></p>
-    
+
     <% @tweet.tweet_comments.each do |tweet_comment| %>
     <%= tweet_comment.user.name_first %>
     <%= tweet_comment.created_at.strftime('%Y/%m/%d') %>

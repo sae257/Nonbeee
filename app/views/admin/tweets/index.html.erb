@@ -16,7 +16,7 @@
      </p>
      <p class="card-text"><%= f.title %></p>
      <p class="card-text"><%= f.body %></p>
-     <p class="card-text"><%= f.genre_id %></p>
+     <p class="card-text"><%= f.genre.name %></p>
       <span><i class="fas fa-comment"></i> <%= "#{f.tweet_comments.count} コメント" %> ｜ </span>
       <span>♡<%= f.favorites.count %> いいね</span>
 

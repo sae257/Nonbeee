@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
 
  
+  namespace :admin do
+    get 'reviews/index'
+  end
   devise_for :users,controllers: {
   registrations: "user/registrations",
   sessions: 'user/sessions'}
@@ -22,7 +25,9 @@ Rails.application.routes.draw do
     resources :tweet_comments, only: [:destroy]
     end
   resources :users, only: [:new, :index, :edit, :show, :create, :update, :destroy]
-  resources :bars, only: [:new, :index, :edit, :show, :create, :update, :destroy]
+  resources :bars, only: [:new, :index, :edit, :show, :create, :update, :destroy] do
+    resources :reviews, only: [:destroy, :index]
+    end
   end
 
   namespace :bar do
@@ -51,7 +56,7 @@ Rails.application.routes.draw do
      end
    end
    resources :bars, only: [:new, :index, :edit, :show, :create, :update, :destroy] do
-     resources :reviews, only: [:create, :destroy]
+     resources :reviews, only: [:create, :destroy, :index]
     end
    resources :tweets, only: [:new, :index, :edit, :show, :create, :update, :destroy] do
      resource :favorites, only: [:create, :destroy]

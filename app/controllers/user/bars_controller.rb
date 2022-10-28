@@ -9,6 +9,5 @@ class User::BarsController < ApplicationController
     @tweets = @bar.tweets
     @review = Review.new
   end
-    
 
 end
