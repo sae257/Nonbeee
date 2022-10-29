@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
- 
+
   namespace :admin do
     get 'reviews/index'
   end
@@ -19,7 +19,7 @@ Rails.application.routes.draw do
   sessions: 'bar/sessions'}
 
   namespace :admin do
-  root to: "homes#top"
+  root to: "tweets#index"
   resources :genres, only: [:new, :index, :edit, :show, :create, :update, :destroy]
   resources :tweets, only: [:new, :index, :edit, :show, :create, :update, :destroy] do
     resources :tweet_comments, only: [:destroy]
@@ -31,7 +31,7 @@ Rails.application.routes.draw do
   end
 
   namespace :bar do
-  root to: "homes#top"
+  root to: "tweets#index"
   get '/bars/unsubscribe' => 'bars#unsubscribe'
   patch '/bars/withdraw' => 'bars#withdraw'
   resources :bars, only: [:new, :index, :edit, :show, :create, :update, :destroy]
