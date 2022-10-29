@@ -4,5 +4,6 @@ class User::HomesController < ApplicationController
   end
 
   def about
+    @genres = Genre.all
   end
 end
