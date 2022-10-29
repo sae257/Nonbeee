@@ -7,18 +7,12 @@ class Bar < ApplicationRecord
   has_many :tweets, dependent: :destroy
   has_many :reviews, dependent: :destroy
 
-  def self.looks(search, word)
-    if search == "perfect_match"
-      @bar = Bar.where("bar_name LIKE?", "#{word}")
-    elsif search == "forward_match"
-      @bar = Bar.where("bar_name LIKE?","#{word}%")
-    elsif search == "backward_match"
-      @bar = Bar.where("bar_name LIKE?","%#{word}")
-    elsif search == "partial_match"
-      @bar = Bar.where("bar_name LIKE?","%#{word}%")
-    else
-      @bar = Bar.all
-    end
-  end
-  
+def self.looks(word)
+  # ヒントとしてはスペースを除外したい or スペースのみってのを検知する
+ if word == "" # 実はスペースだけのケースがあり得る....
+    @bars = Bar.all
+ else
+    @bars = Bar.where("bar_name LIKE?","%#{word}%")
+ end
+end
 end

@@ -2,29 +2,24 @@
  <div class="row">
   <div class="col-md-8 offset-md-2">
 
-  <h5>投稿一覧</h5>
+  <h5><%= @genre.name %>一覧</h5>
     <table class="table table-striped">
-      <tr>
-       <th><%= @genre.name %>一覧</th>
-     </tr>
-     
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Opinion</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @tweets.each do |tweet| %>
-      <tr>
-        <td><%= link_to tweet.title,tweet, class: "tweet_#{tweet.id}" %></td>
-        <td><%= tweet.body %></td>
-      </tr>
-  </tbody>
-　 <% end %>
+      <thead>
+       <tr>
+        <th>店名</th>
+        <th>タイトル</th>
+       </tr>
+      </thead>
+      <tbody>
+       <% @tweets.each do |tweet| %>
+         <tr>
+           <td><%= link_to tweet.bar.bar_name, bar_path(tweet.bar_id) %></td>
+           <td><%= link_to tweet.title, tweet_path(tweet.id)%></td>
+         </tr>
+       <% end %>
+      </tbody>
     </table>
   </div>
  </div>
 </div>
 
-          

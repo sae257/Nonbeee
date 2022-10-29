@@ -1,25 +1,86 @@
-<h2>Results index</h2>
 
-<table class="table table-hover table-inverse">
+
+
   <!--検索対象モデルがUserの時 -->
   <% if @range == "Bar" %>
-    <tbody>
-      <% @bars.each do |bar| %>
-        <tr>
-          <td><%= bar.bar_name %></td>
-        </tr>
-      <% end %>
-    </tbody>
+    
+     <div class="container">
+ <div class="row">
+  <div class="col-md-8 offset-md-2">
+
+  <h5>居酒屋検索結果</h5>
+    <table class="table table-striped">
+      <tr>
+      <th>店名</th>
+      <th>電話番号</th>
+      <th>住所</th>
+      <td></td>
+      <td></td>
+     </tr>
+   <% @bars.each do |f| %>
+      <tr>
+        <td><%= link_to f.bar_name, bar_path(f.id)%></td>
+        <td><%= f.bar_tel %></td>
+        <td><%= f.address %></td>
+        <td>
+        <%= link_to bar_reviews_path(f.id) do %>
+        レビュー<%= f.reviews.count %> 件
+        <% end %>
+        </td>
+        <td>
+        <div class="average-score-display">評価：<%= f.reviews.average(:star).to_f.round(1) %> / 5</div>
+ </td>
+      </tr>
+　 <% end %>
+   </table>
+  </div>
+ </div>
+</div>
+
+   
   <% else %>
     <!--検索対象モデルがUserではない時(= 検索対象モデルがBookの時) -->
-    <tbody>
-      <% @tweets.each do |tweet| %>
-        <tr>
-          <td><%= tweet.bar.bar_name %></td>
-          <td><%= tweet.title %></td>
-          <td><%= tweet.body %></td>
-        </tr>
-      <% end %>
-    </tbody>
-  <% end %>
-</table>
+<div class="container">
+ <div class="row">
+  <div class="col-md-8 offset-md-2">
+    <h5>投稿検索結果</h5>
+  </div>
+ </div>
+</div>    
+       <% @tweets.each do |f| %>
+<div class="card w-50 mx-auto mt-4 shadow-lg">
+ <div class="card-body">
+  <div class="row">
+   <div class="col-md-8 offset-md-2">
+
+      <p class="card-title">
+       <%= link_to(tweet_path(f.id), class:"text-dark") do %>
+       <strong><i class="fa fa-beer"></i><span> <%= f.bar.bar_name %></span></strong>
+       <% end %>
+      </p>
+      <p class="card-text"><%= f.title %></p>
+      <p class="card-text"><%= f.body %></p>
+      <span>
+        <i class="fas fa-comment"></i> <%= "#{f.tweet_comments.count} コメント" %> ｜
+      </span>
+      <span>
+        <% if f.favorited_by?(current_user) %>
+          <td>
+             <%= link_to tweet_favorites_path(f), method: :delete do %>
+              ♥<%= f.favorites.count %> いいね
+              <% end %>
+          </td>
+        <% else %>
+          <td>
+              <%= link_to tweet_favorites_path(f), method: :post do %>
+              ♡<%= f.favorites.count %> いいね
+              <% end %>
+          </td>
+        <% end %>
+      </span>
+   </div>
+  </div>
+ </div>
+</div>
+ <% end %>
+ <% end %>

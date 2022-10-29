@@ -24,7 +24,7 @@
     <% @tweet.tweet_comments.each do |tweet_comment| %>
     <p><%= tweet_comment.user.name_first %>|<%= tweet_comment.created_at.strftime('%Y/%m/%d') %></p>
     <p><%= tweet_comment.comment %></p>
-     <p><%= link_to "削除", admin_tweet_path, method: :delete %></p>
+     <p><%= link_to "削除", admin_tweet_tweet_comment_path(@tweet.id), method: :delete %></p>
     <p>.................</p>
     <% end %>
    </div>

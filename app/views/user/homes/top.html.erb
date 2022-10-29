@@ -1,5 +1,38 @@
 
-<h1>会員側のトップページ</h1>
-<p>ようこそNONBEEEへ！</p>
-<p>このサイトは居酒屋さんのお得なキャンペーンやおすすめ情報、
+<div class="container">
+   <div class="row justify-content-center">
+<h3>ようこそNONBEEEへ！</h3>
+    </div>
+   </div>
+</div>
+
+
+
+<div class="container">
+  <div class="row">
+   <div class="col-md-3">
+
+      <table class="table table-striped">
+      <tr>
+       <th>ジャンル名</th>
+     </tr>
+   <% @genres.each do |f| %>
+      <tr>
+        <td><%= link_to f.name, genre_path(f.id)%></td>
+      </tr>
+　 <% end %>
+    </table>
+
+   </div>
+     <div class='col-md-7 offset-md-1'>
+      <p>このサイトは居酒屋さんのお得なキャンペーンやおすすめ情報、
 期間限定料理など最新のものをテェックできます!</p>
+
+
+
+          </div>
+        </div>
+       </div>
+     </div>
+   </div>
+ </div>

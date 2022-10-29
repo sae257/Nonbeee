@@ -1,14 +1,14 @@
 class User::SearchesController < ApplicationController
 
-  #before_action :authenticate_user!
+  before_action :authenticate_user!
 
   def search
     @range = params[:range]
 
-    if @range == "User"
-      @bars = Bar.looks(params[:search], params[:word])
+    if @range == "Bar"
+      @bars = Bar.looks(params[:word])
     else
-      @tweets = Tweet.looks(params[:search], params[:word])
+      @tweets = Tweet.looks( params[:word])
     end
   end
 

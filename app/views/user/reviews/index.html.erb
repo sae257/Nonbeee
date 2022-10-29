@@ -1,17 +1,20 @@
- <p><strong><%= @bar.bar_name %>レビュー一覧 </strong></p>
+ <div class="container">
+ <div class="row">
+  <div class="col-md-8 offset-md-2">
+
+
+ <h4><strong><%= @bar.bar_name %>レビュー一覧 </strong></h4>
 
  <p>レビュー件数：<%= @bar.reviews.count %></p>
 
     <% @reviews.each do |review| %>
-    <%= review.user.name_first %>
-    <%= review.created_at.strftime('%Y/%m/%d') %>
-    <%= review.post %>
+    <p><%= review.user.name_first %>
+    <%= review.created_at.strftime('%Y/%m/%d') %></p>
+
 
     <div class="review-rating" data-score="<%= review.star %>"><div id="review-star-<%= review.id %>"></div></div>
     <div><p>評価 :<%= review.star%>点</p></div>
-    <% if review.user == current_user %>
-      <%= link_to "削除", bar_review_path(review.bar, review), method: :delete %>
-    <% end %>
+    
      <script>
     $("#review-star-<%= review.id %>").raty({
         starOn: "<%= asset_path('star-on.png') %>",
@@ -20,5 +23,14 @@
         readOnly: true
     });
 </script>
+    <div>コメント：<%= review.post %></div>
+    <% if review.user == current_user %>
+      <%= link_to "削除", bar_review_path(review.bar, review), method: :delete %>
+    <% end %>
+    <div>..............</div>
     <% end %>
   </div>
+
+   </div>
+ </div>
+</div>
