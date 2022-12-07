@@ -6,6 +6,11 @@
      <strong><i class="fa fa-beer"></i><span> <%= @tweet.bar.bar_name %></span></strong>
      <p class="card-text"><%= @tweet.title %></p>
      <p class="card-text"><%= @tweet.body %></p>
+      <p class="card-text"><% if @tweet.image.attached? %>
+        <%= image_tag @tweet.image, size: "200x200" %>
+       <% else %>
+        <%= image_tag 'no_image', size: "200x200" %>
+       <% end %></p>
      <p class="card-text"><%= @tweet.genre.name %></p>
       <span><i class="fas fa-comment"></i> <%= "#{@tweet.tweet_comments.count} コメント" %> ｜</span>
       <span>
@@ -37,7 +42,7 @@
     <%= f.submit "送信する" %>
     <% end %>
   </div>
-  
+
   </div>
  </div>
 </div>

@@ -20,6 +20,12 @@
      <p class="card-text"><%= f.title %></p>
      <p class="card-text"><%= f.body %></p>
      <p class="card-text"><%= f.genre.name %></p>
+     <p class="card-text">
+       <% if f.image.attached? %>
+        <%= image_tag f.image, size: "200x200" %>
+       <% else %>
+        <%= image_tag 'no_image', size: "200x200" %>
+       <% end %></p>
       <span><i class="fas fa-comment"></i> <%= "#{f.tweet_comments.count} コメント" %> ｜ </span>
       <span>♡<%= f.favorites.count %> いいね</span>
 

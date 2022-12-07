@@ -45,7 +45,7 @@ class Bar::TweetsController < ApplicationController
    private
 
   def tweet_params
-  params.require(:tweet).permit(:title, :body, :genre_id)
+  params.require(:tweet).permit(:title, :body, :genre_id, :image)
   end
 
   def set_genre
